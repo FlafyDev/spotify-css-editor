@@ -7,7 +7,7 @@ Edit CSS directly from the Spotify.
 - Edit CSS directly from Spotify.
 - Immediate feedback.
 - Autocompletion and syntax highlighting with Ace Editor.
-- A floating, draggable, and resizable editor.
+- A floating, draggable, and resizable editor window.
 - A configurable key shortcut to quickly open and close the editor.
 
 ## Preview

@@ -15,8 +15,10 @@
     "spicetify-creator": "^1.0.3"
   },
   "dependencies": {
+    "@types/is-hotkey": "^0.1.7",
     "@types/react-rnd": "^8.0.0",
     "ace-builds": "^1.4.14",
+    "is-hotkey": "^0.2.0",
     "react-ace": "^9.5.0",
     "react-rnd": "^10.3.5",
     "spicetify-creator-settings-plugin": "^0.1.0"

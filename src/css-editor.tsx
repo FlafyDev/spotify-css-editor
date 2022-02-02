@@ -3,6 +3,7 @@ import { SettingsSection } from 'spicetify-creator-settings-plugin'
 import styles from './css-editor.module.scss'
 import AceEditor from "react-ace";
 import { Rnd } from 'react-rnd';
+import isHotkey from 'is-hotkey'
 import "ace-builds/src-noconflict/mode-css";
 import "ace-builds/src-noconflict/theme-monokai";
 import 'ace-builds/src-noconflict/snippets/css';
@@ -24,6 +25,7 @@ interface ICSSEditorStates {
 class CSSEditor extends React.Component<ICSSEditorProps, ICSSEditorStates> {
   settings = new SettingsSection('CSS Editor', 'css-editor');
   dragging = false;
+  openHotkey: string;
 
   constructor(props: ICSSEditorProps) {
     super(props);
@@ -33,25 +35,25 @@ class CSSEditor extends React.Component<ICSSEditorProps, ICSSEditorStates> {
     this.settings.addHidden('editor-height', 400);
     this.settings.addHidden('css', '/* Write your css here :D */');
 
-    this.settings.addButton("button-1", "Open CSS Editor to see your current CSS", "Open CSS Editor", () => {
-      this.setState(state => {
-        return {
-          visible: !state.visible,
-          x: this.settings.getFieldValue<number>("editor-x"),
-          y: this.settings.getFieldValue<number>("editor-y"),
-          width: this.settings.getFieldValue<number>("editor-width"),
-          height: this.settings.getFieldValue<number>("editor-height"),
-        }
-      });
-    });
+    this.settings.addButton("button-1", "Open CSS Editor to see your current CSS", "Open CSS Editor", () => this.open());
     this.settings.addInput("font-size", "Font size for the CSS Editor (in pixels)", "12px", () => {
       this.setState({
         fontSize: this.settings.getFieldValue<string>("font-size"),
       })
     });
+    this.settings.addInput('open-hotkey', "Quickly open CSS Editor with an hotkey", "F12", () => {
+      this.openHotkey = this.settings.getFieldValue<string>("open-hotkey")
+    })
+
+    document.addEventListener('keydown', (e) => {
+      if (isHotkey(this.openHotkey, e)) {
+        this.open();
+      }
+    });
 
     this.settings.pushSettings();
 
+    this.openHotkey = this.settings.getFieldValue<string>("open-hotkey");
     this.state = {
       code: this.settings.getFieldValue<string>("css"),
       fontSize: this.settings.getFieldValue<string>("font-size"),
@@ -59,6 +61,18 @@ class CSSEditor extends React.Component<ICSSEditorProps, ICSSEditorStates> {
       visible: false,
       mouseOverEditor: false,
     };
+  }
+
+  open() {
+    this.setState(state => {
+      return {
+        visible: !state.visible,
+        x: this.settings.getFieldValue<number>("editor-x"),
+        y: this.settings.getFieldValue<number>("editor-y"),
+        width: Math.max(this.settings.getFieldValue<number>("editor-width"), 100),
+        height: Math.max(this.settings.getFieldValue<number>("editor-height"), 100),
+      }
+    });
   }
 
   setPosition(pos?: { x: number, y: number }) {
@@ -140,7 +154,7 @@ class CSSEditor extends React.Component<ICSSEditorProps, ICSSEditorStates> {
           }}
         >
           <div style={{ width: this.state.width, height: this.state.height }} className={styles.draggableChild}>
-            <div className="main-playlistEditDetailsModal-header" style={{ padding: '14px' }}>
+            <div className={"main-playlistEditDetailsModal-header " + styles.headerContainer} >
               <h1 className="main-type-canon">CSS</h1>
               <button className="main-playlistEditDetailsModal-closeBtn" onClick={() => {
                 this.setState({

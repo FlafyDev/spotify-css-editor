@@ -8,7 +8,7 @@ Edit CSS directly from the Spotify.
 - Immediate feedback.
 - Autocompletion and syntax highlighting with Ace Editor.
 - A floating, draggable, and resizable editor.
-- A configurable shortcut to quickly open and close the editor.
+- A configurable key shortcut to quickly open and close the editor.
 
 ## Preview
 ![preview1](/preview/preview1.png)

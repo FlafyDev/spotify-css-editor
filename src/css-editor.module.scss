@@ -1,0 +1,70 @@
+.screen {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: '100vw';
+  height: '100vh';
+  z-index: 10000;
+  
+  * {
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    -webkit-app-region: no-drag;
+  }
+}
+
+.cssEditorContainer {
+  display: flex;
+  width: 100%;
+  height: 80vh;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-size: 50px;
+}
+
+.editor * {
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 9px;
+}
+
+.popupInput {
+  width: '100%';
+  padding: '0 10px';
+}
+
+.draggableChild {
+  background-color: var(--spice-card);
+  color: var(--spice-text);
+  font-weight: bold;
+  overflow: hidden;
+  border: solid var(--spice-card) 8px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px 5px rgb(0, 0, 0, 0.4);
+}
+
+.codeInput {
+  padding: 10px;
+  background-color: black;
+  color: white;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  width: 80%;
+  height: 80%;
+}
+
+.editorClose {
+  background-color: #ab5555;
+  float: right;
+  text-align: center;
+  height: 27px;
+  width: 27px;
+  position: relative;
+  top: -3px;
+  cursor: pointer;
+}

@@ -1,0 +1,24 @@
+{
+  "name": "spotify-css-editor",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "spicetify-creator",
+    "build-local": "spicetify-creator --out=dist",
+    "watch": "spicetify-creator --watch",
+    "watch-local": "spicetify-creator --watch --out=dist"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/react": "^17.0.38",
+    "@types/react-dom": "^17.0.11",
+    "spicetify-creator": "^1.0.3"
+  },
+  "dependencies": {
+    "@types/react-rnd": "^8.0.0",
+    "ace-builds": "^1.4.14",
+    "react-ace": "^9.5.0",
+    "react-rnd": "^10.3.5",
+    "spicetify-creator-settings-plugin": "^0.1.0"
+  }
+}

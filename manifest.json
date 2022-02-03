@@ -1,6 +1,6 @@
 {
   "name": "CSS Editor",
-  "description": "Edit CSS directly from the Spotify",
+  "description": "Edit CSS directly from Spotify",
   "preview": "preview/icon.png",
   "main": "dist/css-editor.js",
   "readme": "README.md",

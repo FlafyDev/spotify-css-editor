@@ -27602,7 +27602,7 @@ if (x === "react-dom") return Spicetify.ReactDOM;
             try {
               const buttons = allSettingsContainer.getElementsByClassName("x-settings-button");
               for (let i = 0; i < buttons.length; i++) {
-                if (buttons[i].children[0].textContent?.toLowerCase().endsWith("advanced settings")) {
+                if (buttons[i].children[0]?.textContent?.toLowerCase().endsWith("advanced settings")) {
                   advancedOptionsButton = buttons[i];
                   break;
                 }

@@ -1,7 +1,6 @@
 import ReactDOM from 'react-dom'
 import React from 'react'
 import CSSEditor from './css-editor';
-import { SettingsSection } from 'spicetify-creator-settings-plugin';
 
 async function main() {
   let mainViewContainer: HTMLElement | null = null;

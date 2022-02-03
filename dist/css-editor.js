@@ -1,4 +1,4 @@
-var OfzYOnEukujq = (() => {
+var PkWGmucfaemd = (() => {
   var __create = Object.create;
   var __defProp = Object.defineProperty;
   var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -27544,8 +27544,8 @@ if (x === "react-dom") return Spicetify.ReactDOM;
   var import_react = __toESM(__require("react"));
   var import_react_dom = __toESM(__require("react-dom"));
 
-  // postcss-module:C:\Users\flafy\AppData\Local\Temp\tmp-13796-qmL3OO59Sa39\17ebc8525e51\settings.module.css
-  var settings_module_default = { "settingsContainer": "settings-module__settingsContainer___-pYygOfzYOnEukujq" };
+  // postcss-module:C:\Users\flafy\AppData\Local\Temp\tmp-14520-E9Wj6508Pen1\17ebec855691\settings.module.css
+  var settings_module_default = { "settingsContainer": "settings-module__settingsContainer___-pYygPkWGmucfaemd" };
 
   // node_modules/spicetify-creator-settings-plugin/settingsSection.tsx
   var SettingsSection = class {
@@ -27596,13 +27596,29 @@ if (x === "react-dom") return Spicetify.ReactDOM;
           pluginSettingsContainer = document.createElement("div");
           pluginSettingsContainer.id = this.settingsId;
           pluginSettingsContainer.className = settings_module_default.settingsContainer;
-          let advancedOptionsButton;
-          const buttons = allSettingsContainer.getElementsByClassName("x-settings-button");
-          for (let i = 0; i < buttons.length; i++) {
-            if (buttons[i].children[0].textContent === "Show advanced settings") {
-              advancedOptionsButton = buttons[i];
-              break;
+          let advancedOptionsButton = null;
+          let tries = 0;
+          while (true) {
+            try {
+              const buttons = allSettingsContainer.getElementsByClassName("x-settings-button");
+              for (let i = 0; i < buttons.length; i++) {
+                if (buttons[i].children[0].textContent?.toLowerCase().endsWith("advanced settings")) {
+                  advancedOptionsButton = buttons[i];
+                  break;
+                }
+              }
+            } catch (e) {
+              console.error('Error while finding "show advanced settings" button:', e);
             }
+            if (advancedOptionsButton)
+              break;
+            if (Spicetify.Platform.History.location.pathname !== "/preferences") {
+              console.log(`Couldn't find "show advanced settings" button after ${tries} tries.`);
+              return;
+            }
+            tries++;
+            console.log(`Couldn't find "show advanced settings" button. Trying again in 1000ms...`);
+            await new Promise((resolve) => setTimeout(resolve, 1e3));
           }
           allSettingsContainer.insertBefore(pluginSettingsContainer, advancedOptionsButton);
         } else {
@@ -27707,7 +27723,7 @@ if (x === "react-dom") return Spicetify.ReactDOM;
             setValue(e.currentTarget.value);
           }
         }) : props.field.type === "button" ? /* @__PURE__ */ import_react.default.createElement("span", {
-          className: "x-settings-button"
+          className: ""
         }, /* @__PURE__ */ import_react.default.createElement("button", {
           id,
           onClick: () => {
@@ -27745,8 +27761,8 @@ if (x === "react-dom") return Spicetify.ReactDOM;
     }
   };
 
-  // postcss-module:C:\Users\flafy\AppData\Local\Temp\tmp-13796-qmL3OO59Sa39\17ebc8523910\css-editor.module.css
-  var css_editor_module_default = { "screen": "css-editor-module__screen___e4-bfOfzYOnEukujq", "draggableChild": "css-editor-module__draggableChild___h2xlwOfzYOnEukujq", "headerContainer": "css-editor-module__headerContainer___O67ymOfzYOnEukujq" };
+  // postcss-module:C:\Users\flafy\AppData\Local\Temp\tmp-14520-E9Wj6508Pen1\17ebec853950\css-editor.module.css
+  var css_editor_module_default = { "screen": "css-editor-module__screen___e4-bfPkWGmucfaemd", "draggableChild": "css-editor-module__draggableChild___h2xlwPkWGmucfaemd", "headerContainer": "css-editor-module__headerContainer___O67ymPkWGmucfaemd" };
 
   // src/css-editor.tsx
   var import_react_ace = __toESM(require_lib());
@@ -29256,17 +29272,17 @@ and limitations under the License.
  */
 
 (async () => {
-    if (!document.getElementById(`OfzYOnEukujq`)) {
+    if (!document.getElementById(`PkWGmucfaemd`)) {
       var el = document.createElement('style');
-      el.id = `OfzYOnEukujq`;
+      el.id = `PkWGmucfaemd`;
       el.textContent = (String.raw`
-  /* C:/Users/flafy/AppData/Local/Temp/tmp-13796-qmL3OO59Sa39/17ebc8525e51/settings.module.css */
-.settings-module__settingsContainer___-pYygOfzYOnEukujq {
+  /* C:/Users/flafy/AppData/Local/Temp/tmp-14520-E9Wj6508Pen1/17ebec855691/settings.module.css */
+.settings-module__settingsContainer___-pYygPkWGmucfaemd {
   display: contents;
 }
 
-/* C:/Users/flafy/AppData/Local/Temp/tmp-13796-qmL3OO59Sa39/17ebc8523910/css-editor.module.css */
-.css-editor-module__screen___e4-bfOfzYOnEukujq {
+/* C:/Users/flafy/AppData/Local/Temp/tmp-14520-E9Wj6508Pen1/17ebec853950/css-editor.module.css */
+.css-editor-module__screen___e4-bfPkWGmucfaemd {
   pointer-events: none;
   position: fixed;
   top: 0;
@@ -29275,12 +29291,12 @@ and limitations under the License.
   height: "100vh";
   z-index: 10000;
 }
-.css-editor-module__screen___e4-bfOfzYOnEukujq * {
+.css-editor-module__screen___e4-bfPkWGmucfaemd * {
   -webkit-box-align: center;
   -webkit-box-pack: center;
   -webkit-app-region: no-drag;
 }
-.css-editor-module__draggableChild___h2xlwOfzYOnEukujq {
+.css-editor-module__draggableChild___h2xlwPkWGmucfaemd {
   background-color: #282828;
   color: var(--spice-text);
   font-weight: bold;
@@ -29289,7 +29305,7 @@ and limitations under the License.
   border-radius: 5px;
   filter: drop-shadow(0 0 0.75rem black);
 }
-.css-editor-module__headerContainer___O67ymOfzYOnEukujq {
+.css-editor-module__headerContainer___O67ymPkWGmucfaemd {
   padding: 14px;
 }
 

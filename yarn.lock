@@ -1255,10 +1255,10 @@ source-map@^0.7.3:
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.7.3.tgz#5302f8169031735226544092e64981f751750383"
   integrity sha512-CkCj6giN3S+n9qrYiBTX5gystlENnRW5jZeNLHpe6aue+SrHcG5VYwujhW9s4dY31mEGsxBDrHR6oI69fTXsaQ==
 
-spicetify-creator-settings-plugin@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/spicetify-creator-settings-plugin/-/spicetify-creator-settings-plugin-0.1.0.tgz#4ad568d6764490e915e6f1adfddb8a4ad5ba59d1"
-  integrity sha512-J2Z6Of4nCqmU/5sfTr0Tj32E3oHFI/JAv3zPKNWuVoLL3c658BUvY6g6bqGiHjaTmyZROtBcovrOrSNcU0tQqg==
+spicetify-creator-settings-plugin@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/spicetify-creator-settings-plugin/-/spicetify-creator-settings-plugin-0.1.2.tgz#83a0c0bd963292bd3ff730dd5a72ddf3c7bd5c2c"
+  integrity sha512-SoFwgYXTiwq8c/0FyAJLuOITfJ/OLaFEowTnDNv2eCxBFD4tcqtNNZISYjpfQi4DsBu4rOQfkD6SFtQYHCjJqA==
   dependencies:
     "@types/react" "^17.0.38"
     "@types/react-dom" "^17.0.11"

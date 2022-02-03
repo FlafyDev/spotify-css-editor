@@ -21,6 +21,6 @@
     "is-hotkey": "^0.2.0",
     "react-ace": "^9.5.0",
     "react-rnd": "^10.3.5",
-    "spicetify-creator-settings-plugin": "^0.1.2"
+    "spicetify-creator-settings-plugin": "^0.1.3"
   }
 }

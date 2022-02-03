@@ -1,4 +1,4 @@
-var PkWGmucfaemd = (() => {
+var zGCxFfrNiwLk = (() => {
   var __create = Object.create;
   var __defProp = Object.defineProperty;
   var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -27544,8 +27544,8 @@ if (x === "react-dom") return Spicetify.ReactDOM;
   var import_react = __toESM(__require("react"));
   var import_react_dom = __toESM(__require("react-dom"));
 
-  // postcss-module:C:\Users\flafy\AppData\Local\Temp\tmp-14520-E9Wj6508Pen1\17ebec855691\settings.module.css
-  var settings_module_default = { "settingsContainer": "settings-module__settingsContainer___-pYygPkWGmucfaemd" };
+  // postcss-module:C:\Users\flafy\AppData\Local\Temp\tmp-960-XagCC2a31sqe\17ec0c2b9561\settings.module.css
+  var settings_module_default = { "settingsContainer": "settings-module__settingsContainer___-pYygzGCxFfrNiwLk" };
 
   // node_modules/spicetify-creator-settings-plugin/settingsSection.tsx
   var SettingsSection = class {
@@ -27761,8 +27761,8 @@ if (x === "react-dom") return Spicetify.ReactDOM;
     }
   };
 
-  // postcss-module:C:\Users\flafy\AppData\Local\Temp\tmp-14520-E9Wj6508Pen1\17ebec853950\css-editor.module.css
-  var css_editor_module_default = { "screen": "css-editor-module__screen___e4-bfPkWGmucfaemd", "draggableChild": "css-editor-module__draggableChild___h2xlwPkWGmucfaemd", "headerContainer": "css-editor-module__headerContainer___O67ymPkWGmucfaemd" };
+  // postcss-module:C:\Users\flafy\AppData\Local\Temp\tmp-960-XagCC2a31sqe\17ec0c2b4ac0\css-editor.module.css
+  var css_editor_module_default = { "screen": "css-editor-module__screen___e4-bfzGCxFfrNiwLk", "draggableChild": "css-editor-module__draggableChild___h2xlwzGCxFfrNiwLk", "headerContainer": "css-editor-module__headerContainer___O67ymzGCxFfrNiwLk" };
 
   // src/css-editor.tsx
   var import_react_ace = __toESM(require_lib());
@@ -29272,17 +29272,17 @@ and limitations under the License.
  */
 
 (async () => {
-    if (!document.getElementById(`PkWGmucfaemd`)) {
+    if (!document.getElementById(`zGCxFfrNiwLk`)) {
       var el = document.createElement('style');
-      el.id = `PkWGmucfaemd`;
+      el.id = `zGCxFfrNiwLk`;
       el.textContent = (String.raw`
-  /* C:/Users/flafy/AppData/Local/Temp/tmp-14520-E9Wj6508Pen1/17ebec855691/settings.module.css */
-.settings-module__settingsContainer___-pYygPkWGmucfaemd {
+  /* C:/Users/flafy/AppData/Local/Temp/tmp-960-XagCC2a31sqe/17ec0c2b9561/settings.module.css */
+.settings-module__settingsContainer___-pYygzGCxFfrNiwLk {
   display: contents;
 }
 
-/* C:/Users/flafy/AppData/Local/Temp/tmp-14520-E9Wj6508Pen1/17ebec853950/css-editor.module.css */
-.css-editor-module__screen___e4-bfPkWGmucfaemd {
+/* C:/Users/flafy/AppData/Local/Temp/tmp-960-XagCC2a31sqe/17ec0c2b4ac0/css-editor.module.css */
+.css-editor-module__screen___e4-bfzGCxFfrNiwLk {
   pointer-events: none;
   position: fixed;
   top: 0;
@@ -29291,12 +29291,12 @@ and limitations under the License.
   height: "100vh";
   z-index: 10000;
 }
-.css-editor-module__screen___e4-bfPkWGmucfaemd * {
+.css-editor-module__screen___e4-bfzGCxFfrNiwLk * {
   -webkit-box-align: center;
   -webkit-box-pack: center;
   -webkit-app-region: no-drag;
 }
-.css-editor-module__draggableChild___h2xlwPkWGmucfaemd {
+.css-editor-module__draggableChild___h2xlwzGCxFfrNiwLk {
   background-color: #282828;
   color: var(--spice-text);
   font-weight: bold;
@@ -29305,7 +29305,7 @@ and limitations under the License.
   border-radius: 5px;
   filter: drop-shadow(0 0 0.75rem black);
 }
-.css-editor-module__headerContainer___O67ymPkWGmucfaemd {
+.css-editor-module__headerContainer___O67ymzGCxFfrNiwLk {
   padding: 14px;
 }
 

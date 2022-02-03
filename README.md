@@ -1,6 +1,6 @@
 # Spotify CSS Editor
 ###### Built with [Spicetify Creator](https://github.com/FlafyDev/spicetify-creator). Download from [Spicetify Marketplace](https://github.com/CharlieS1103/spicetify-marketplace).
-Edit CSS directly from the Spotify.  
+Edit CSS directly from Spotify.  
 
 
 ## Features

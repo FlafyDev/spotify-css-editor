@@ -1,4 +1,4 @@
-var XXlWWYnPTHAH = (() => {
+var cssDeditor = (() => {
   var __create = Object.create;
   var __defProp = Object.defineProperty;
   var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -27544,8 +27544,8 @@ if (x === "react-dom") return Spicetify.ReactDOM;
   var import_react = __toESM(__require("react"));
   var import_react_dom = __toESM(__require("react-dom"));
 
-  // postcss-module:C:\Users\flafy\AppData\Local\Temp\tmp-17588-epgmhfDlKI4L\17ec731a2771\settings.module.css
-  var settings_module_default = { "settingsContainer": "settings-module__settingsContainer___e9wxnXXlWWYnPTHAH" };
+  // postcss-module:C:\Users\flafy\AppData\Local\Temp\tmp-18640-x8rZ4UV7MUHE\17ec75f9ea71\settings.module.css
+  var settings_module_default = { "settingsContainer": "settings-module__settingsContainer___e9wxn_cssDeditor" };
 
   // node_modules/spcr-settings/settingsSection.tsx
   var SettingsSection = class {
@@ -27761,8 +27761,8 @@ if (x === "react-dom") return Spicetify.ReactDOM;
     }
   };
 
-  // postcss-module:C:\Users\flafy\AppData\Local\Temp\tmp-17588-epgmhfDlKI4L\17ec731a0df0\css-editor.module.css
-  var css_editor_module_default = { "screen": "css-editor-module__screen___e4-bfXXlWWYnPTHAH", "draggableChild": "css-editor-module__draggableChild___h2xlwXXlWWYnPTHAH", "headerContainer": "css-editor-module__headerContainer___O67ymXXlWWYnPTHAH" };
+  // postcss-module:C:\Users\flafy\AppData\Local\Temp\tmp-18640-x8rZ4UV7MUHE\17ec75f9d140\css-editor.module.css
+  var css_editor_module_default = { "screen": "css-editor-module__screen___e4-bf_cssDeditor", "draggableChild": "css-editor-module__draggableChild___h2xlw_cssDeditor", "headerContainer": "css-editor-module__headerContainer___O67ym_cssDeditor" };
 
   // src/css-editor.tsx
   var import_react_ace = __toESM(require_lib());
@@ -29272,17 +29272,17 @@ and limitations under the License.
  */
 
 (async () => {
-    if (!document.getElementById(`XXlWWYnPTHAH`)) {
+    if (!document.getElementById(`cssDeditor`)) {
       var el = document.createElement('style');
-      el.id = `XXlWWYnPTHAH`;
+      el.id = `cssDeditor`;
       el.textContent = (String.raw`
-  /* C:/Users/flafy/AppData/Local/Temp/tmp-17588-epgmhfDlKI4L/17ec731a2771/settings.module.css */
-.settings-module__settingsContainer___e9wxnXXlWWYnPTHAH {
+  /* C:/Users/flafy/AppData/Local/Temp/tmp-18640-x8rZ4UV7MUHE/17ec75f9ea71/settings.module.css */
+.settings-module__settingsContainer___e9wxn_cssDeditor {
   display: contents;
 }
 
-/* C:/Users/flafy/AppData/Local/Temp/tmp-17588-epgmhfDlKI4L/17ec731a0df0/css-editor.module.css */
-.css-editor-module__screen___e4-bfXXlWWYnPTHAH {
+/* C:/Users/flafy/AppData/Local/Temp/tmp-18640-x8rZ4UV7MUHE/17ec75f9d140/css-editor.module.css */
+.css-editor-module__screen___e4-bf_cssDeditor {
   pointer-events: none;
   position: fixed;
   top: 0;
@@ -29291,12 +29291,12 @@ and limitations under the License.
   height: "100vh";
   z-index: 10000;
 }
-.css-editor-module__screen___e4-bfXXlWWYnPTHAH * {
+.css-editor-module__screen___e4-bf_cssDeditor * {
   -webkit-box-align: center;
   -webkit-box-pack: center;
   -webkit-app-region: no-drag;
 }
-.css-editor-module__draggableChild___h2xlwXXlWWYnPTHAH {
+.css-editor-module__draggableChild___h2xlw_cssDeditor {
   background-color: #282828;
   color: var(--spice-text);
   font-weight: bold;
@@ -29305,7 +29305,7 @@ and limitations under the License.
   border-radius: 5px;
   filter: drop-shadow(0 0 0.75rem black);
 }
-.css-editor-module__headerContainer___O67ymXXlWWYnPTHAH {
+.css-editor-module__headerContainer___O67ym_cssDeditor {
   padding: 14px;
 }
 

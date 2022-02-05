@@ -1,5 +1,5 @@
 import React from 'react'
-import { SettingsSection } from 'spicetify-creator-settings-plugin'
+import { SettingsSection } from 'spcr-settings'
 import styles from './css-editor.module.scss'
 import AceEditor from "react-ace";
 import { Rnd } from 'react-rnd';

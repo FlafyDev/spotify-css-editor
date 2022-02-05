@@ -1,4 +1,4 @@
-var zGCxFfrNiwLk = (() => {
+var XXlWWYnPTHAH = (() => {
   var __create = Object.create;
   var __defProp = Object.defineProperty;
   var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -27540,14 +27540,14 @@ if (x === "react-dom") return Spicetify.ReactDOM;
   // src/css-editor.tsx
   var import_react3 = __toESM(__require("react"));
 
-  // node_modules/spicetify-creator-settings-plugin/settingsSection.tsx
+  // node_modules/spcr-settings/settingsSection.tsx
   var import_react = __toESM(__require("react"));
   var import_react_dom = __toESM(__require("react-dom"));
 
-  // postcss-module:C:\Users\flafy\AppData\Local\Temp\tmp-960-XagCC2a31sqe\17ec0c2b9561\settings.module.css
-  var settings_module_default = { "settingsContainer": "settings-module__settingsContainer___-pYygzGCxFfrNiwLk" };
+  // postcss-module:C:\Users\flafy\AppData\Local\Temp\tmp-17588-epgmhfDlKI4L\17ec731a2771\settings.module.css
+  var settings_module_default = { "settingsContainer": "settings-module__settingsContainer___e9wxnXXlWWYnPTHAH" };
 
-  // node_modules/spicetify-creator-settings-plugin/settingsSection.tsx
+  // node_modules/spcr-settings/settingsSection.tsx
   var SettingsSection = class {
     constructor(name, settingsId) {
       this.name = name;
@@ -27761,8 +27761,8 @@ if (x === "react-dom") return Spicetify.ReactDOM;
     }
   };
 
-  // postcss-module:C:\Users\flafy\AppData\Local\Temp\tmp-960-XagCC2a31sqe\17ec0c2b4ac0\css-editor.module.css
-  var css_editor_module_default = { "screen": "css-editor-module__screen___e4-bfzGCxFfrNiwLk", "draggableChild": "css-editor-module__draggableChild___h2xlwzGCxFfrNiwLk", "headerContainer": "css-editor-module__headerContainer___O67ymzGCxFfrNiwLk" };
+  // postcss-module:C:\Users\flafy\AppData\Local\Temp\tmp-17588-epgmhfDlKI4L\17ec731a0df0\css-editor.module.css
+  var css_editor_module_default = { "screen": "css-editor-module__screen___e4-bfXXlWWYnPTHAH", "draggableChild": "css-editor-module__draggableChild___h2xlwXXlWWYnPTHAH", "headerContainer": "css-editor-module__headerContainer___O67ymXXlWWYnPTHAH" };
 
   // src/css-editor.tsx
   var import_react_ace = __toESM(require_lib());
@@ -29272,17 +29272,17 @@ and limitations under the License.
  */
 
 (async () => {
-    if (!document.getElementById(`zGCxFfrNiwLk`)) {
+    if (!document.getElementById(`XXlWWYnPTHAH`)) {
       var el = document.createElement('style');
-      el.id = `zGCxFfrNiwLk`;
+      el.id = `XXlWWYnPTHAH`;
       el.textContent = (String.raw`
-  /* C:/Users/flafy/AppData/Local/Temp/tmp-960-XagCC2a31sqe/17ec0c2b9561/settings.module.css */
-.settings-module__settingsContainer___-pYygzGCxFfrNiwLk {
+  /* C:/Users/flafy/AppData/Local/Temp/tmp-17588-epgmhfDlKI4L/17ec731a2771/settings.module.css */
+.settings-module__settingsContainer___e9wxnXXlWWYnPTHAH {
   display: contents;
 }
 
-/* C:/Users/flafy/AppData/Local/Temp/tmp-960-XagCC2a31sqe/17ec0c2b4ac0/css-editor.module.css */
-.css-editor-module__screen___e4-bfzGCxFfrNiwLk {
+/* C:/Users/flafy/AppData/Local/Temp/tmp-17588-epgmhfDlKI4L/17ec731a0df0/css-editor.module.css */
+.css-editor-module__screen___e4-bfXXlWWYnPTHAH {
   pointer-events: none;
   position: fixed;
   top: 0;
@@ -29291,12 +29291,12 @@ and limitations under the License.
   height: "100vh";
   z-index: 10000;
 }
-.css-editor-module__screen___e4-bfzGCxFfrNiwLk * {
+.css-editor-module__screen___e4-bfXXlWWYnPTHAH * {
   -webkit-box-align: center;
   -webkit-box-pack: center;
   -webkit-app-region: no-drag;
 }
-.css-editor-module__draggableChild___h2xlwzGCxFfrNiwLk {
+.css-editor-module__draggableChild___h2xlwXXlWWYnPTHAH {
   background-color: #282828;
   color: var(--spice-text);
   font-weight: bold;
@@ -29305,7 +29305,7 @@ and limitations under the License.
   border-radius: 5px;
   filter: drop-shadow(0 0 0.75rem black);
 }
-.css-editor-module__headerContainer___O67ymzGCxFfrNiwLk {
+.css-editor-module__headerContainer___O67ymXXlWWYnPTHAH {
   padding: 14px;
 }
 

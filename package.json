@@ -21,6 +21,6 @@
     "is-hotkey": "^0.2.0",
     "react-ace": "^9.5.0",
     "react-rnd": "^10.3.5",
-    "spcr-settings": "^0.1.3"
+    "spcr-settings": "^1.0.2"
   }
 }

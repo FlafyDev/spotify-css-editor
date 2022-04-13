@@ -5,7 +5,6 @@ var cssDeditor = (() => {
   var __getOwnPropNames = Object.getOwnPropertyNames;
   var __getProtoOf = Object.getPrototypeOf;
   var __hasOwnProp = Object.prototype.hasOwnProperty;
-  var __markAsModule = (target) => __defProp(target, "__esModule", { value: true });
   var __require = /* @__PURE__ */ ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, {
     get: (a, b) => (typeof require !== "undefined" ? require : a)[b]
   }) : x)(function(x) {
@@ -18,17 +17,15 @@ if (x === "react-dom") return Spicetify.ReactDOM;
   var __commonJS = (cb, mod) => function __require2() {
     return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
   };
-  var __reExport = (target, module, copyDefault, desc) => {
-    if (module && typeof module === "object" || typeof module === "function") {
-      for (let key of __getOwnPropNames(module))
-        if (!__hasOwnProp.call(target, key) && (copyDefault || key !== "default"))
-          __defProp(target, key, { get: () => module[key], enumerable: !(desc = __getOwnPropDesc(module, key)) || desc.enumerable });
+  var __copyProps = (to, from, except, desc) => {
+    if (from && typeof from === "object" || typeof from === "function") {
+      for (let key of __getOwnPropNames(from))
+        if (!__hasOwnProp.call(to, key) && key !== except)
+          __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
     }
-    return target;
+    return to;
   };
-  var __toESM = (module, isNodeMode) => {
-    return __reExport(__markAsModule(__defProp(module != null ? __create(__getProtoOf(module)) : {}, "default", !isNodeMode && module && module.__esModule ? { get: () => module.default, enumerable: true } : { value: module, enumerable: true })), module);
-  };
+  var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target, mod));
 
   // node_modules/ace-builds/src-noconflict/ace.js
   var require_ace = __commonJS({
@@ -27544,18 +27541,19 @@ if (x === "react-dom") return Spicetify.ReactDOM;
   var import_react = __toESM(__require("react"));
   var import_react_dom = __toESM(__require("react-dom"));
 
-  // postcss-module:C:\Users\flafy\AppData\Local\Temp\tmp-18640-x8rZ4UV7MUHE\17ec75f9ea71\settings.module.css
+  // postcss-module:/tmp/tmp-112185-geqLNq5zSxgl/18020a1c2bd1/settings.module.css
   var settings_module_default = { "settingsContainer": "settings-module__settingsContainer___e9wxn_cssDeditor" };
 
   // node_modules/spcr-settings/settingsSection.tsx
   var SettingsSection = class {
-    constructor(name, settingsId) {
+    constructor(name, settingsId, initialSettingsFields = {}) {
       this.name = name;
       this.settingsId = settingsId;
-      this.settingsFields = {};
+      this.initialSettingsFields = initialSettingsFields;
+      this.settingsFields = this.initialSettingsFields;
       this.setRerender = null;
       this.pushSettings = async () => {
-        Object.entries(this.settingsFields).map(([nameId, field]) => {
+        Object.entries(this.settingsFields).forEach(([nameId, field]) => {
           if (field.type !== "button" && this.getFieldValue(nameId) === void 0) {
             this.setFieldValue(nameId, field.defaultValue);
           }
@@ -27586,60 +27584,63 @@ if (x === "react-dom") return Spicetify.ReactDOM;
           await new Promise((resolve) => setTimeout(resolve, 100));
         }
         const allSettingsContainer = document.getElementsByClassName("x-settings-container")[0];
-        let pluginSettingsContainer = null;
-        for (let i = 0; i < allSettingsContainer.children.length; i++) {
-          if (allSettingsContainer.children[i].id === this.settingsId) {
-            pluginSettingsContainer = allSettingsContainer.children[i];
-          }
-        }
+        let pluginSettingsContainer = Array.from(allSettingsContainer.children).find((child) => child.id === this.settingsId);
         if (!pluginSettingsContainer) {
           pluginSettingsContainer = document.createElement("div");
           pluginSettingsContainer.id = this.settingsId;
           pluginSettingsContainer.className = settings_module_default.settingsContainer;
-          let advancedOptionsButton = null;
+          const spotifyVersion = this.getSpotifyVersion();
+          let advancedOptionsButton = void 0;
           let tries = 0;
-          while (true) {
-            try {
-              const buttons = allSettingsContainer.getElementsByClassName("x-settings-button");
-              for (let i = 0; i < buttons.length; i++) {
-                if (buttons[i].children[0]?.textContent?.toLowerCase().endsWith("advanced settings")) {
-                  advancedOptionsButton = buttons[i];
-                  break;
-                }
+          if (spotifyVersion >= 80) {
+            allSettingsContainer.appendChild(pluginSettingsContainer);
+          } else {
+            while (true) {
+              try {
+                const buttons = allSettingsContainer.getElementsByClassName("x-settings-button");
+                advancedOptionsButton = Array.from(buttons).find((button) => {
+                  return button.children[0]?.type === "button";
+                });
+              } catch (e) {
+                console.error('Error while finding "show advanced settings" button:', e);
               }
-            } catch (e) {
-              console.error('Error while finding "show advanced settings" button:', e);
+              if (advancedOptionsButton)
+                break;
+              if (Spicetify.Platform.History.location.pathname !== "/preferences") {
+                console.warn(`[spcr-settings] couldn't find "show advanced settings" button after ${tries} tries.`);
+                return;
+              }
+              tries++;
+              console.log(`Couldn't find "show advanced settings" button. Trying again in 1000ms...`);
+              await new Promise((resolve) => setTimeout(resolve, 1e3));
             }
-            if (advancedOptionsButton)
-              break;
-            if (Spicetify.Platform.History.location.pathname !== "/preferences") {
-              console.log(`Couldn't find "show advanced settings" button after ${tries} tries.`);
-              return;
-            }
-            tries++;
-            console.log(`Couldn't find "show advanced settings" button. Trying again in 1000ms...`);
-            await new Promise((resolve) => setTimeout(resolve, 1e3));
+            allSettingsContainer.insertBefore(pluginSettingsContainer, advancedOptionsButton);
           }
-          allSettingsContainer.insertBefore(pluginSettingsContainer, advancedOptionsButton);
         } else {
           console.log(pluginSettingsContainer);
         }
         import_react_dom.default.render(/* @__PURE__ */ import_react.default.createElement(this.FieldsContainer, null), pluginSettingsContainer);
       };
-      this.addButton = (nameId, description, value, onClick) => {
+      this.addButton = (nameId, description, value, onClick, events) => {
         this.settingsFields[nameId] = {
           type: "button",
           description,
-          defaultValue: value,
-          callback: onClick
+          value,
+          events: {
+            onClick,
+            ...events
+          }
         };
       };
-      this.addInput = (nameId, description, defaultValue, onChange) => {
+      this.addInput = (nameId, description, defaultValue, onChange, events) => {
         this.settingsFields[nameId] = {
           type: "input",
           description,
           defaultValue,
-          callback: onChange
+          events: {
+            onChange,
+            ...events
+          }
         };
       };
       this.addHidden = (nameId, defaultValue) => {
@@ -27648,21 +27649,27 @@ if (x === "react-dom") return Spicetify.ReactDOM;
           defaultValue
         };
       };
-      this.addToggle = (nameId, description, defaultValue, onInput) => {
+      this.addToggle = (nameId, description, defaultValue, onChange, events) => {
         this.settingsFields[nameId] = {
           type: "toggle",
           description,
           defaultValue,
-          callback: onInput
+          events: {
+            onChange,
+            ...events
+          }
         };
       };
-      this.addDropDown = (nameId, description, options, defaultIndex, onSelect) => {
+      this.addDropDown = (nameId, description, options, defaultIndex, onSelect, events) => {
         this.settingsFields[nameId] = {
           type: "dropdown",
           description,
           defaultValue: options[defaultIndex],
-          callback: onSelect,
-          options
+          options,
+          events: {
+            onSelect,
+            ...events
+          }
         };
       };
       this.getFieldValue = (nameId) => {
@@ -27670,6 +27677,12 @@ if (x === "react-dom") return Spicetify.ReactDOM;
       };
       this.setFieldValue = (nameId, newValue) => {
         Spicetify.LocalStorage.set(`${this.settingsId}.${nameId}`, JSON.stringify({ value: newValue }));
+      };
+      this.getSpotifyVersion = () => {
+        const stringVersion = Spicetify.Platform.PlatformData.client_version_triple;
+        const splitVersion = stringVersion.split(".");
+        const zValue = splitVersion[2];
+        return parseInt(zValue);
       };
       this.FieldsContainer = () => {
         const [rerender, setRerender] = (0, import_react.useState)(0);
@@ -27690,7 +27703,7 @@ if (x === "react-dom") return Spicetify.ReactDOM;
         const id = `${this.settingsId}.${props.nameId}`;
         let defaultStateValue;
         if (props.field.type === "button") {
-          defaultStateValue = props.field.defaultValue;
+          defaultStateValue = props.field.value;
         } else {
           defaultStateValue = this.getFieldValue(props.nameId);
         }
@@ -27703,8 +27716,6 @@ if (x === "react-dom") return Spicetify.ReactDOM;
             setValueState(newValue);
             this.setFieldValue(props.nameId, newValue);
           }
-          if (props.field.callback)
-            props.field.callback();
         };
         return /* @__PURE__ */ import_react.default.createElement(import_react.default.Fragment, null, /* @__PURE__ */ import_react.default.createElement("div", {
           className: "main-type-mesto",
@@ -27719,17 +27730,25 @@ if (x === "react-dom") return Spicetify.ReactDOM;
           dir: "ltr",
           value,
           type: "text",
+          ...props.field.events,
           onChange: (e) => {
             setValue(e.currentTarget.value);
+            const onChange = props.field.events?.onChange;
+            if (onChange)
+              onChange(e);
           }
         }) : props.field.type === "button" ? /* @__PURE__ */ import_react.default.createElement("span", {
           className: ""
         }, /* @__PURE__ */ import_react.default.createElement("button", {
           id,
-          onClick: () => {
-            setValue();
-          },
           className: "main-buttons-button main-button-outlined",
+          ...props.field.events,
+          onClick: (e) => {
+            setValue();
+            const onClick = props.field.events?.onClick;
+            if (onClick)
+              onClick(e);
+          },
           type: "button"
         }, value)) : props.field.type === "toggle" ? /* @__PURE__ */ import_react.default.createElement("label", {
           className: "x-toggle-wrapper x-settings-secondColumn"
@@ -27738,8 +27757,12 @@ if (x === "react-dom") return Spicetify.ReactDOM;
           className: "x-toggle-input",
           type: "checkbox",
           checked: value,
+          ...props.field.events,
           onClick: (e) => {
             setValue(e.currentTarget.checked);
+            const onClick = props.field.events?.onClick;
+            if (onClick)
+              onClick(e);
           }
         }), /* @__PURE__ */ import_react.default.createElement("span", {
           className: "x-toggle-indicatorWrapper"
@@ -27748,8 +27771,12 @@ if (x === "react-dom") return Spicetify.ReactDOM;
         }))) : props.field.type === "dropdown" ? /* @__PURE__ */ import_react.default.createElement("select", {
           className: "main-dropDown-dropDown",
           id,
+          ...props.field.events,
           onChange: (e) => {
             setValue(props.field.options[e.currentTarget.selectedIndex]);
+            const onChange = props.field.events?.onChange;
+            if (onChange)
+              onChange(e);
           }
         }, props.field.options.map((option, i) => {
           return /* @__PURE__ */ import_react.default.createElement("option", {
@@ -27761,7 +27788,7 @@ if (x === "react-dom") return Spicetify.ReactDOM;
     }
   };
 
-  // postcss-module:C:\Users\flafy\AppData\Local\Temp\tmp-18640-x8rZ4UV7MUHE\17ec75f9d140\css-editor.module.css
+  // postcss-module:/tmp/tmp-112185-geqLNq5zSxgl/18020a1c00f0/css-editor.module.css
   var css_editor_module_default = { "screen": "css-editor-module__screen___e4-bf_cssDeditor", "draggableChild": "css-editor-module__draggableChild___h2xlw_cssDeditor", "headerContainer": "css-editor-module__headerContainer___O67ym_cssDeditor" };
 
   // src/css-editor.tsx
@@ -29276,12 +29303,12 @@ and limitations under the License.
       var el = document.createElement('style');
       el.id = `cssDeditor`;
       el.textContent = (String.raw`
-  /* C:/Users/flafy/AppData/Local/Temp/tmp-18640-x8rZ4UV7MUHE/17ec75f9ea71/settings.module.css */
+  /* ../../../../../../tmp/tmp-112185-geqLNq5zSxgl/18020a1c2bd1/settings.module.css */
 .settings-module__settingsContainer___e9wxn_cssDeditor {
   display: contents;
 }
 
-/* C:/Users/flafy/AppData/Local/Temp/tmp-18640-x8rZ4UV7MUHE/17ec75f9d140/css-editor.module.css */
+/* ../../../../../../tmp/tmp-112185-geqLNq5zSxgl/18020a1c00f0/css-editor.module.css */
 .css-editor-module__screen___e4-bf_cssDeditor {
   pointer-events: none;
   position: fixed;

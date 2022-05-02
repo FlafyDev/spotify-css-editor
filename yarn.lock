@@ -1353,10 +1353,10 @@ source-map@^0.7.3, source-map@~0.7.2:
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.7.3.tgz#5302f8169031735226544092e64981f751750383"
   integrity sha512-CkCj6giN3S+n9qrYiBTX5gystlENnRW5jZeNLHpe6aue+SrHcG5VYwujhW9s4dY31mEGsxBDrHR6oI69fTXsaQ==
 
-spcr-settings@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/spcr-settings/-/spcr-settings-1.0.2.tgz#9f4b0ae5a3a11c1973380639f00db71d6af9782e"
-  integrity sha512-++od1zm03Hy3rU+o6RJyKDKi6KJsztjTX3cOMU05aVCm0x6VnWtBk+CXLXjkrMRf4C6337XMtZzNONYJn0cFTw==
+spcr-settings@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/spcr-settings/-/spcr-settings-1.1.0.tgz#f46a1b74f6db4d4d17166138bab5f000acb33b9b"
+  integrity sha512-aLtJDmhHRCmRBJb/gHlRkKd+7+Tz8Y1h2W26YA4vhDu/p4UEH9/1IMKDGI/7robYc512OYYfUAzYHA+tDMSCfg==
   dependencies:
     "@types/react" "^17.0.38"
     "@types/react-dom" "^17.0.11"

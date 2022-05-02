@@ -27541,8 +27541,8 @@ if (x === "react-dom") return Spicetify.ReactDOM;
   var import_react = __toESM(__require("react"));
   var import_react_dom = __toESM(__require("react-dom"));
 
-  // postcss-module:/tmp/tmp-112185-geqLNq5zSxgl/18020a1c2bd1/settings.module.css
-  var settings_module_default = { "settingsContainer": "settings-module__settingsContainer___e9wxn_cssDeditor" };
+  // postcss-module:/tmp/tmp-17633-Aws8BFG5oc6S/180846a121f1/settings.module.css
+  var settings_module_default = { "settingsContainer": "settings-module__settingsContainer___e9wxn_cssDeditor", "heading": "settings-module__heading___AnER-_cssDeditor", "description": "settings-module__description___dP4fR_cssDeditor", "inputWrapper": "settings-module__inputWrapper___LgOrw_cssDeditor" };
 
   // node_modules/spcr-settings/settingsSection.tsx
   var SettingsSection = class {
@@ -27552,6 +27552,7 @@ if (x === "react-dom") return Spicetify.ReactDOM;
       this.initialSettingsFields = initialSettingsFields;
       this.settingsFields = this.initialSettingsFields;
       this.setRerender = null;
+      this.buttonClassnames = null;
       this.pushSettings = async () => {
         Object.entries(this.settingsFields).forEach(([nameId, field]) => {
           if (field.type !== "button" && this.getFieldValue(nameId) === void 0) {
@@ -27583,39 +27584,16 @@ if (x === "react-dom") return Spicetify.ReactDOM;
             return;
           await new Promise((resolve) => setTimeout(resolve, 100));
         }
-        const allSettingsContainer = document.getElementsByClassName("x-settings-container")[0];
+        const allSettingsContainer = document.querySelector(".main-view-container__scroll-node-child main div");
+        if (!allSettingsContainer)
+          return console.error("[spcr-settings] settings container not found");
+        this.buttonClassnames = Array.from(allSettingsContainer.querySelectorAll(":scope > button")).at(-1)?.className ?? null;
         let pluginSettingsContainer = Array.from(allSettingsContainer.children).find((child) => child.id === this.settingsId);
         if (!pluginSettingsContainer) {
           pluginSettingsContainer = document.createElement("div");
           pluginSettingsContainer.id = this.settingsId;
           pluginSettingsContainer.className = settings_module_default.settingsContainer;
-          const spotifyVersion = this.getSpotifyVersion();
-          let advancedOptionsButton = void 0;
-          let tries = 0;
-          if (spotifyVersion >= 80) {
-            allSettingsContainer.appendChild(pluginSettingsContainer);
-          } else {
-            while (true) {
-              try {
-                const buttons = allSettingsContainer.getElementsByClassName("x-settings-button");
-                advancedOptionsButton = Array.from(buttons).find((button) => {
-                  return button.children[0]?.type === "button";
-                });
-              } catch (e) {
-                console.error('Error while finding "show advanced settings" button:', e);
-              }
-              if (advancedOptionsButton)
-                break;
-              if (Spicetify.Platform.History.location.pathname !== "/preferences") {
-                console.warn(`[spcr-settings] couldn't find "show advanced settings" button after ${tries} tries.`);
-                return;
-              }
-              tries++;
-              console.log(`Couldn't find "show advanced settings" button. Trying again in 1000ms...`);
-              await new Promise((resolve) => setTimeout(resolve, 1e3));
-            }
-            allSettingsContainer.insertBefore(pluginSettingsContainer, advancedOptionsButton);
-          }
+          allSettingsContainer.appendChild(pluginSettingsContainer);
         } else {
           console.log(pluginSettingsContainer);
         }
@@ -27678,12 +27656,6 @@ if (x === "react-dom") return Spicetify.ReactDOM;
       this.setFieldValue = (nameId, newValue) => {
         Spicetify.LocalStorage.set(`${this.settingsId}.${nameId}`, JSON.stringify({ value: newValue }));
       };
-      this.getSpotifyVersion = () => {
-        const stringVersion = Spicetify.Platform.PlatformData.client_version_triple;
-        const splitVersion = stringVersion.split(".");
-        const zValue = splitVersion[2];
-        return parseInt(zValue);
-      };
       this.FieldsContainer = () => {
         const [rerender, setRerender] = (0, import_react.useState)(0);
         this.setRerender = setRerender;
@@ -27691,7 +27663,7 @@ if (x === "react-dom") return Spicetify.ReactDOM;
           className: settings_module_default.settingsContainer,
           key: rerender
         }, /* @__PURE__ */ import_react.default.createElement("h2", {
-          className: "main-shelf-title main-type-cello"
+          className: ["main-shelf-title main-type-cello", settings_module_default.heading].join(" ")
         }, this.name), Object.entries(this.settingsFields).map(([nameId, field]) => {
           return /* @__PURE__ */ import_react.default.createElement(this.Field, {
             nameId,
@@ -27721,9 +27693,10 @@ if (x === "react-dom") return Spicetify.ReactDOM;
           className: "main-type-mesto",
           style: { color: "var(--spice-subtext)" }
         }, /* @__PURE__ */ import_react.default.createElement("label", {
+          className: settings_module_default.description,
           htmlFor: id
         }, props.field.description || "")), /* @__PURE__ */ import_react.default.createElement("span", {
-          className: "x-settings-secondColumn"
+          className: ["x-settings-secondColumn", settings_module_default.inputWrapper].join(" ")
         }, props.field.type === "input" ? /* @__PURE__ */ import_react.default.createElement("input", {
           className: "main-dropDown-dropDown",
           id,
@@ -27741,7 +27714,7 @@ if (x === "react-dom") return Spicetify.ReactDOM;
           className: ""
         }, /* @__PURE__ */ import_react.default.createElement("button", {
           id,
-          className: "main-buttons-button main-button-outlined",
+          className: this.buttonClassnames ?? "",
           ...props.field.events,
           onClick: (e) => {
             setValue();
@@ -27788,7 +27761,7 @@ if (x === "react-dom") return Spicetify.ReactDOM;
     }
   };
 
-  // postcss-module:/tmp/tmp-112185-geqLNq5zSxgl/18020a1c00f0/css-editor.module.css
+  // postcss-module:/tmp/tmp-17633-Aws8BFG5oc6S/180846a10b20/css-editor.module.css
   var css_editor_module_default = { "screen": "css-editor-module__screen___e4-bf_cssDeditor", "draggableChild": "css-editor-module__draggableChild___h2xlw_cssDeditor", "headerContainer": "css-editor-module__headerContainer___O67ym_cssDeditor" };
 
   // src/css-editor.tsx
@@ -29185,7 +29158,10 @@ if (x === "react-dom") return Spicetify.ReactDOM;
         },
         onResize: (e, direction, ref, delta, position) => {
           this.setPosition(position);
-          this.setSize({ width: ref.offsetWidth, height: ref.offsetHeight });
+          this.setSize({
+            width: ref.offsetWidth,
+            height: ref.offsetHeight
+          });
         }
       }, /* @__PURE__ */ import_react3.default.createElement("div", {
         style: { width: this.state.width, height: this.state.height },
@@ -29303,12 +29279,27 @@ and limitations under the License.
       var el = document.createElement('style');
       el.id = `cssDeditor`;
       el.textContent = (String.raw`
-  /* ../../../../../../tmp/tmp-112185-geqLNq5zSxgl/18020a1c2bd1/settings.module.css */
+  /* ../../../../../../tmp/tmp-17633-Aws8BFG5oc6S/180846a121f1/settings.module.css */
 .settings-module__settingsContainer___e9wxn_cssDeditor {
   display: contents;
 }
+.settings-module__heading___AnER-_cssDeditor {
+  grid-column: 1/-1;
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+  color: #fff;
+  margin-top: 24px;
+}
+.settings-module__description___dP4fR_cssDeditor {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+.settings-module__inputWrapper___LgOrw_cssDeditor {
+  display: flex;
+  justify-self: end;
+}
 
-/* ../../../../../../tmp/tmp-112185-geqLNq5zSxgl/18020a1c00f0/css-editor.module.css */
+/* ../../../../../../tmp/tmp-17633-Aws8BFG5oc6S/180846a10b20/css-editor.module.css */
 .css-editor-module__screen___e4-bf_cssDeditor {
   pointer-events: none;
   position: fixed;
